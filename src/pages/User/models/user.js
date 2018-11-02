@@ -3,6 +3,7 @@ export default {
     namespace:'user',
     state:{
         number:1,
+        name:null,
     
     },
     reducers:{
@@ -17,13 +18,19 @@ export default {
                 ...state,
                 number:state.number-1
             }
+        },
+        'success' (state,action){
+            return{
+                ...state,
+                name:action.name
+            }
         }
     },
     effects:{
         *name({ payload }, { call, put }) {  // eslint-disable-line
            
             const user = yield call(axios.get, "/api/user");
-            console.log(user)
+            yield put({ type: "success", name: user.data.name });
             
           },
     }

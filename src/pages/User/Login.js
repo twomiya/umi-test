@@ -7,6 +7,7 @@ const Login =(props)=> {
         <div>
             <h1>Login</h1>
             <p>{props.user.number}</p>
+            <p>{props.user.name}</p>
             <Button onClick={()=>{props.dispatch({type:'user/add'})}}>add</Button>
             <Button onClick={()=>{props.dispatch({type:'user/min'})}}>min</Button>
             <Button onClick={()=>{props.dispatch({type:'user/name'})}}>get user</Button>
